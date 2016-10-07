@@ -1,0 +1,42 @@
+<div>
+  <!--列表-->
+  <div class="list-group" style="width:30%;float:left">
+    <a class="list-group-item" ng-repeat="keyword in keywords" ng-click="showKeyword($index)" id="keyword{{$index}}">
+      <span class="badge">{{keyword.keywordCount}}</span>
+      {{keyword.keyword}}
+    </a>
+  </div>
+  <!--文章列表-->
+  <div style="float:left;width:65%;margin-left:5%;height:100%">
+    <!--pagination-->
+    <nav>
+      <ul class="pagination" ng-show="articleModel != null">
+        <li id="toLeft" ng-class="{disabled:!pageModel.leftEnable}"><a ng-click="getArticles(pageModel.curPage - 1)">&laquo;</a></li>
+        <li ng-class="{active: pageModel.curPage == page}" ng-repeat="page in pageModel.pages"><a  ng-click="getArticles(page)">{{page}} <span class="sr-only">(current)</span></a></li>
+        <li id="toRight" ng-class="{disabled:!pageModel.rightEnable}"><a ng-click="getArticles(pageModel.curPage + 1)">&raquo;</a></li>
+      </ul>
+    </nav>
+    <!--文章-->
+    <div class="container-fluid">
+      <div ng-repeat="article in articleModel.articleModelList" id="article{{$index}}">
+        <div class="row" ng-click="showArticle(article)" style="cursor:pointer">
+          <div class="col-xs-18 col-md-12"><h3>{{article.articleTitle}}</h3></div>
+        </div>
+        <div class="row" ng-if="article.articleAuthor != 'unkown'" ng-click="showAuthor(article)" style="cursor:pointer">
+          <div class="col-xs-18 col-md-12"><span style="margin-right:5px">作者:</span><span class="label label-primary">{{article.articleAuthor}}</span></div>
+        </div>
+        <div class="row" style="margin:10px 0px;cursor:pointer" ng-click="showArticle(article)">
+          <div class="col-xs-18 col-md-12 alert alert-info">{{article.articleDescription}}</div>
+        </div>
+      </div>
+    </div>
+    <!--pagination-->
+    <nav>
+      <ul class="pagination" ng-show="articleModel != null">
+        <li id="toLeft" ng-class="{disabled:!pageModel.leftEnable}"><a ng-click="getArticles(pageModel.curPage - 1)">&laquo;</a></li>
+        <li ng-class="{active: pageModel.curPage == page}" ng-repeat="page in pageModel.pages"><a  ng-click="getArticles(page)">{{page}} <span class="sr-only">(current)</span></a></li>
+        <li id="toRight" ng-class="{disabled:!pageModel.rightEnable}"><a ng-click="getArticles(pageModel.curPage + 1)">&raquo;</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
