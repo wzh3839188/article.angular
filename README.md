@@ -1,3 +1,7 @@
+##Description
+This project base on angular-seed。Used to show article which crawled by article.web(https://github.com/wzh3839188/article.web)。
+Start project as angular-seed.The entrance is http://localhost:8000/index
+
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
